@@ -1,5 +1,5 @@
 import { useState, useEffect } from "preact/hooks";
-import { ChevronUpIcon } from "@heroicons/react/20/solid";
+import { ChevronRightIcon, ChevronUpIcon } from "@heroicons/react/20/solid";
 import { Disclosure, Transition } from "@headlessui/react";
 import { useHistory } from "react-router-dom";
 import { Navbar, Button, Card } from "@material-tailwind/react";
@@ -149,10 +149,15 @@ export function MyNavbar() {
           </div>
         </Navbar>
         {/* <MySidebar className={"hidden fixed md:flex flex-col h-screen p-3 bg-gray-50 shadow w-[15%] left-0 z-[10]"} /> */}
-        <Card className="hidden fixed md:flex flex-col h-screen p-3 bg-gray-50 shadow-lg drop-shadow-lg w-[15%] left-0 z-[10]">
+        <Card className="hidden fixed md:flex flex-col h-screen p-3 bg-gray-50 shadow-lg drop-shadow-lg w-[15%] left-0 z-[10] rounded-none ">
           <div className="space-y-3">
             <div className="flex flex-row items-center justify-center">
-              <h2 className="text-xl font-bold">SD Negeri Pajerukan</h2>
+              <h2 className="text-lg font-bold">SD Negeri Pajerukan</h2>
+              {/* <Button size="sm" className="bg-gray-100 rounded-full">
+                <ChevronRightIcon
+                  className="h-[2rem] text-gray-800"
+                />
+              </Button> */}
             </div>
             <div className="flex-1">
               <ul className="pt-2 pb-4 space-y-[1rem] text-sm flex flex-col">
