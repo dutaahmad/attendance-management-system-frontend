@@ -1,8 +1,8 @@
 import { Button, Typography } from "@material-tailwind/react";
 
-export const AddButton = ({ addButtonName, addDataPath }) => (
+export const AddButton = ({ addButtonName, addDataPath, customStyle }) => (
   <Button
-    // className="w-full md:w-[12rem]"
+    className={`${customStyle}`}
     type="button"
     variant="gradient"
     size="lg"

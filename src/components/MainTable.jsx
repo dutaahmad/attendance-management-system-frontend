@@ -21,7 +21,7 @@ const TableCell = ({ value, record, render }) => {
   );
 };
 
-const MainTable = ({ data, columns, loading, uniqueKeys }) =>
+const MainTable = ({ data, columns, loading = true, uniqueKeys }) =>
   loading ? (
     <Loader />
   ) : (
@@ -36,7 +36,7 @@ const MainTable = ({ data, columns, loading, uniqueKeys }) =>
                   flex flex-col
                   gap-[0.5rem]
                   p-[0.5rem]
-                  mt-[6.5rem]
+                  mt-[2rem]
                   max-h-[80vh]
                   max-w-[90%]
                   overflow-scroll
@@ -45,7 +45,7 @@ const MainTable = ({ data, columns, loading, uniqueKeys }) =>
                   md:min-w-[50%]
                   md:max-w-[80%]
                   md:max-h-[75vh]
-
+                  md:w-full
                   {md:ml-[17rem]}
                   "
     >

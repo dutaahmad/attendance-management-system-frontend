@@ -65,11 +65,14 @@ export const PeopleList = () => {
     //   addButtonName={"Tambah Orang"}
     //   handleEdit={handleInfo}
     // />
-    <div className="flex flex-col items-center justify-center h-full w-full">
-      <AddButton
-        addButtonName="Daftarkan Orang Baru"
-        addDataPath="/tambah-orang"
-      />
+    <div className="fixed flex flex-col items-center justify-center h-full w-[80%] {bg-white} ml-[6rem]">
+      <div className="flex flex-row items-end justify-end w-full">
+        <AddButton
+          customStyle={"flex-end"}
+          addButtonName="Daftarkan Orang Baru"
+          addDataPath="/tambah-orang"
+        />
+      </div>
       <MainTable data={peopleList} columns={columns} loading={loading} />
     </div>
   );
