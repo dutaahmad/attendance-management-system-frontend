@@ -1,9 +1,19 @@
+import { useEffect, useState } from "react";
 import { getAuth, getToken } from "../utils/functions/session_handler";
 import { MyNavbar } from "./MyNavbar";
 
 const Layout = ({ children }) => {
-  let authData = getAuth();
-  let token = getToken();
+  // let authData = getAuth();
+  // let token = getToken();
+  const [authData, setAuthData] = useState({});
+  const [token, setToken] = useState({});
+
+  useEffect(() => {
+    const auth = getAuth();
+    const token = getToken();
+    setAuthData(auth);
+    setToken(token);
+  }, []);
 
   return (
     <div
@@ -15,7 +25,7 @@ const Layout = ({ children }) => {
                   min-h-[100vh]
                   min-w-[100vw]"
     >
-      {authData && token && <MyNavbar />}
+      {authData && token && <MyNavbar token={token} auth_data={authData} />}
       {children}
     </div>
   );

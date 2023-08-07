@@ -5,10 +5,10 @@ import { useHistory } from "react-router-dom";
 import { Navbar, Button, Card } from "@material-tailwind/react";
 import { getToken, revokeAuth } from "../utils/functions/session_handler";
 
-export function MyNavbar() {
+export function MyNavbar({ token, auth_data }) {
   const history = useHistory();
 
-  const menu = [
+  const fullAdminMenu = [
     {
       name: "PRESENSI",
       navigation: () => {
@@ -53,13 +53,73 @@ export function MyNavbar() {
     },
   ];
 
+  const plainEmployeeMenu = [
+    {
+      name: "PROFIL SEKOLAH",
+      navigation: () => {
+        history.push("/profil-sekolah");
+      },
+    },
+    {
+      name: "DAFTAR ORANG",
+      navigation: () => {
+        history.push("/daftar-orang");
+      },
+    },
+    {
+      name: "DAFTAR PEGAWAI",
+      navigation: () => {
+        history.push("/daftar-pegawai");
+      },
+    },
+    {
+      name: "DAFTAR MURID",
+      navigation: () => {
+        history.push("/daftar-murid");
+      },
+    },
+    {
+      name: "PROFILE",
+      navigation: () => {
+        history.push("/profil");
+      },
+    },
+  ];
+
+  const studentMenu = [
+    {
+      name: "PROFIL SEKOLAH",
+      navigation: () => {
+        history.push("/profil-sekolah");
+      },
+    },
+    {
+      name: "DAFTAR PEGAWAI",
+      navigation: () => {
+        history.push("/daftar-pegawai");
+      },
+    },
+    {
+      name: "DAFTAR MURID",
+      navigation: () => {
+        history.push("/daftar-murid");
+      },
+    },
+    {
+      name: "PROFILE",
+      navigation: () => {
+        history.push("/profil");
+      },
+    },
+  ];
+
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     let auth = getToken();
     setIsLoggedIn(auth ? true : false);
-  });
+  }, []);
 
   // let isLoggedIn = getToken()
 
@@ -119,7 +179,7 @@ export function MyNavbar() {
                     leaveTo="transform opacity-0 scale-95"
                   >
                     <Disclosure.Panel className="flex flex-col gap-[1rem] ">
-                      {menu.map((item) => (
+                      {fullAdminMenu.map((item) => (
                         <Button
                           className="flex-1"
                           variant="filled"
@@ -161,18 +221,57 @@ export function MyNavbar() {
             </div>
             <div className="flex-1">
               <ul className="pt-2 pb-4 space-y-[1rem] text-sm flex flex-col">
-                {menu.map((item, index) => (
-                  <Button
-                    key={index}
-                    className="flex-1"
-                    size="md"
-                    type="button"
-                    color="cyan"
-                    onClick={() => item.navigation()}
-                  >
-                    {item.name}
-                  </Button>
-                ))}
+                {auth_data.is_employee &&
+                auth_data.role_data.role_name === "admin"
+                  ? fullAdminMenu.map((item, index) => (
+                      <Button
+                        key={index}
+                        className="flex-1"
+                        size="md"
+                        type="button"
+                        color="cyan"
+                        onClick={() => item.navigation()}
+                      >
+                        {item.name}
+                      </Button>
+                    ))
+                  : auth_data.role_data.role_name === "Murid"
+                  ? studentMenu.map((item, index) => (
+                      <Button
+                        key={index}
+                        className="flex-1"
+                        size="md"
+                        type="button"
+                        color="cyan"
+                        onClick={() => item.navigation()}
+                      >
+                        {item.name}
+                      </Button>
+                    ))
+                  : plainEmployeeMenu.map((item, index) => (
+                      <Button
+                        key={index}
+                        className="flex-1"
+                        size="md"
+                        type="button"
+                        color="cyan"
+                        onClick={() => item.navigation()}
+                      >
+                        {item.name}
+                      </Button>
+                    ))}
+                <Button
+                  className="relative"
+                  variant="outlined"
+                  size="sm"
+                  color="green"
+                  type="button"
+                  onClick={() =>
+                    console.log("auth datas : ", { token, auth_data })
+                  }
+                >
+                  See Auth Data
+                </Button>
                 <Button
                   className="relative"
                   variant="filled"
