@@ -212,7 +212,7 @@ export function MyNavbar({ token, auth_data }) {
         <Card className="hidden fixed md:flex flex-col h-screen p-3 bg-gray-50 shadow-lg drop-shadow-lg w-[15%] left-0 z-[10] rounded-none ">
           <div className="space-y-3">
             <div className="flex flex-row items-center justify-center">
-              <h2 className="text-lg font-bold">SD Negeri Pajerukan</h2>
+              <h2 className="text-lg font-bold">SD Negeri 2 Pajerukan</h2>
               {/* <Button size="sm" className="bg-gray-100 rounded-full">
                 <ChevronRightIcon
                   className="h-[2rem] text-gray-800"
@@ -260,18 +260,6 @@ export function MyNavbar({ token, auth_data }) {
                         {item.name}
                       </Button>
                     ))}
-                <Button
-                  className="relative"
-                  variant="outlined"
-                  size="sm"
-                  color="green"
-                  type="button"
-                  onClick={() =>
-                    console.log("auth datas : ", { token, auth_data })
-                  }
-                >
-                  See Auth Data
-                </Button>
                 <Button
                   className="relative"
                   variant="filled"

@@ -70,7 +70,7 @@ export const PeopleList = () => {
         <AddButton
           customStyle={"flex-end"}
           addButtonName="Daftarkan Orang Baru"
-          addDataPath="/tambah-orang"
+          navigator={() => navigate.push("/tambah-orang")}
         />
       </div>
       <MainTable data={peopleList} columns={columns} loading={loading} />
